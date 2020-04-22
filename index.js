@@ -1,4 +1,4 @@
-let channel = 'ygdmfa-2021-2022-library';
+let channel = 'gd-library-share';
 let makeURL = (per, page) => `https://api.are.na/v2/channels/${channel}?per=${per}&page=${page}`;
 
 // Get metadata
