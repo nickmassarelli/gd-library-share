@@ -2,14 +2,14 @@ let channel = 'gd-library-share';
 let makeURL = (per, page) => `https://api.are.na/v2/channels/${channel}?per=${per}&page=${page}`;
 
 // Get metadata
-fetch(makeURL(1, 1))
+fetch(makeURL(1, 1), {cache: 'no-store'})
   .then((res) => res.json())
   .then((json) => {
-    document.querySelector('#title').innerHTML = json.title;
+    // document.querySelector('#title').innerHTML = json.title;
   });
 
 // Get the blocks
-fetch(makeURL(1, 1))
+fetch(makeURL(1, 1), {cache: 'no-store'})
   .then((res) => res.json())
   .then((json) => count = json.length)
   .then((count) => {
@@ -18,7 +18,7 @@ fetch(makeURL(1, 1))
 
     let fetches = [];
     for (let page = 1; page <= pages; page++) {
-      fetches.push(fetch(makeURL(per, page)).then((res) => res.json()).then((json) => json.contents));
+      fetches.push(fetch(makeURL(per, page), {cache: 'no-store'}).then((res) => res.json()).then((json) => json.contents));
     }
 
     Promise.all(fetches)
